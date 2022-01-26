@@ -1,0 +1,9 @@
+fiter ten user
+tail -5 /etc/passwd|awk -F':' '{ print $1}'
+fiter gio cua user
+lastlog -u quang01|awk '{ print $5}'
+filter timenow
+date|awk '{print $3}'
+
+Asia/Ho_Chi_Minh
+

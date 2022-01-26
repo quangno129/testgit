@@ -1,0 +1,26 @@
+#!/bin/bash
+#auther=Tran Thanh Quang
+#fiter data
+a="$(service dahdi status | awk '{print $10}')" 
+#echo $a
+#hand data strings
+tamp="q" 
+b="${a:1:3}${tamp}" 
+#echo $b
+c="${a:5:3}${tamp}"
+#echo $c
+d="${a:9:3}${tamp}"
+#echo $d
+#input array
+declare –a array
+array=($b $c $d)
+arraylength=${#array[@]}
+for ((i=0;i<${arraylength};i++));
+do
+	if [ ${array[$i]} == "q" ];
+	then
+        	echo "Normal"
+	else
+        	echo "Crit"
+	fi
+done

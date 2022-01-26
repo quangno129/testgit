@@ -1,0 +1,50 @@
+#!/bin/bash
+a=$(service dahdi status | awk '{print $9}')
+echo $a >test.txt
+if "sed -i 's/ACTIVE)/g' test.txt" == "ACTIVE";
+then
+	echo "Canh bao"
+else
+	echi "Binh thuong"
+fi 
+
+#!/bin/bash
+a=$(service dahdi status | awk '{print $9}')
+echo $a >test.txt
+if $(grep -w "INACTIVE)" test.txt) == $"INACTIVE"
+then
+	echo "Canh bao"
+else
+	echi "Binh thuong"
+fi 
+
+#!/bin/bash
+a=$(service dahdi status | awk '{print $9}')
+echo $a >test.txt
+if [ -z $(grep "$INACTIVE)" "$test.txt") ]; then
+
+        echo 'the string is exist' >&2
+else
+
+        echo 'the string doesnt exist' >&2
+fi
+#!/bin/bash
+#auther=Tran Thanh Quang
+a="$(service dahdi status | awk '{print $9}')" #fiter data
+#echo $a
+b=${a:1:8} #hand data strings
+#echo $b
+c=${a:11:8}
+#echo $c
+d=${a:21:8}
+#echo $d
+e=${a:31:8}
+#echo $e
+if [ $b == "INACTIVE" ] || [ $c == "INACTIVE" ] || [ $d == "INACTIVE" ] || [ $e == "INACTIVE" ];
+then
+        echo "Crit"
+else
+        echo "Normal"
+fi
+
+ 
